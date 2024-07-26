@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaApp.API", "FormulaApp.API\FormulaApp.API.csproj", "{6EBAAA9F-1A1C-43C7-9859-6ED9B7C696B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormulaApp.Test", "FormulaApp.Test\FormulaApp.Test.csproj", "{A7451DFB-220F-414E-9755-BC1AAD6CA252}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EBAAA9F-1A1C-43C7-9859-6ED9B7C696B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBAAA9F-1A1C-43C7-9859-6ED9B7C696B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBAAA9F-1A1C-43C7-9859-6ED9B7C696B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBAAA9F-1A1C-43C7-9859-6ED9B7C696B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7451DFB-220F-414E-9755-BC1AAD6CA252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7451DFB-220F-414E-9755-BC1AAD6CA252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7451DFB-220F-414E-9755-BC1AAD6CA252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7451DFB-220F-414E-9755-BC1AAD6CA252}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
