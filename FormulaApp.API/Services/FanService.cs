@@ -1,6 +1,9 @@
-﻿using FormulaApp.API.Models;
+﻿using FormulaApp.API.Configuration;
+using FormulaApp.API.Models;
 using FormulaApp.API.Services.Interfaces;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
+using System.Net;
 using System.Reflection.Metadata.Ecma335;
 
 namespace FormulaApp.API.Services
@@ -8,13 +11,15 @@ namespace FormulaApp.API.Services
     public class FanService : IFanService
     {
         private readonly HttpClient _httpClient;
-        public FanService(HttpClient httpClient) {
+        private readonly ApiServiceConfig _apiConfig;
+        public FanService(HttpClient httpClient, IOptions<ApiServiceConfig> config) {
             _httpClient = httpClient;
+            _apiConfig = config.Value;
         }
 
-        public async Task<List<Fan>> GetAllFans()
+        public async Task<List<Fan>?> GetAllFans()
         {
-            var fans = new List<Fan>
+            /*var fans = new List<Fan>
                 {
                     new Fan()
                     {
@@ -28,9 +33,21 @@ namespace FormulaApp.API.Services
                         Name = "don",
                         Email = "don.donne@email.com"
                     },
-                };
+                };*/
+
+            var response = await _httpClient.GetAsync(_apiConfig.Url);
+
+            if(response.StatusCode == HttpStatusCode.NotFound)
+                return new List<Fan>();
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+                return null;
+
+
+            var fans = await response.Content.ReadFromJsonAsync<List<Fan>>();
 
             return fans;
+            
         }
 
         

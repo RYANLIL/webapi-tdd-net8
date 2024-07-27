@@ -4,6 +4,6 @@ namespace FormulaApp.API.Services.Interfaces
 {
     public interface IFanService
     {
-        Task<List<Fan>> GetAllFans();
+        Task<List<Fan>?> GetAllFans();
     }
 }
