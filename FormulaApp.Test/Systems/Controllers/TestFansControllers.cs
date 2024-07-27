@@ -37,7 +37,15 @@ namespace FormulaApp.Test.Systems.Controllers
             // Arrange What the test needs to run
             var mockFanService = new Mock<IFanService>();
             mockFanService.Setup(service => service.GetAllFans())
-                .ReturnsAsync(new List<Fan>());
+                .ReturnsAsync(new List<Fan>()
+                {
+                    new Fan()
+                    {
+                        Id = 1,
+                        Name = "Test",
+                        Email ="test@email.com"
+                    }
+                });
 
             var fansController = new FansController(mockFanService.Object);
 
@@ -56,7 +64,15 @@ namespace FormulaApp.Test.Systems.Controllers
             // Arrange What the test needs to run
             var mockFanService = new Mock<IFanService>();
             mockFanService.Setup(service => service.GetAllFans())
-                .ReturnsAsync(new List<Fan>());
+                .ReturnsAsync(new List<Fan>()
+                {
+                    new Fan()
+                    {
+                        Id = 1,
+                        Name = "Test",
+                        Email ="test@email.com"
+                    }
+                });
 
             var fansController = new FansController(mockFanService.Object);
 
@@ -75,22 +91,50 @@ namespace FormulaApp.Test.Systems.Controllers
             // Arrange What the test needs to run
             var mockFanService = new Mock<IFanService>();
             mockFanService.Setup(service => service.GetAllFans())
-                .ReturnsAsync(new List<Fan>());
+                .ReturnsAsync(new List<Fan>()
+                {
+                    new Fan()
+                    {
+                        Id = 1,
+                        Name = "Test",
+                        Email ="test@email.com"
+                    }
+                });
 
             var fansController = new FansController(mockFanService.Object);
 
             // Act
             var result = (OkObjectResult)await fansController.GetFans();
-            
-            
+
+
             // Assert
             //Verify that result is an ok status 200
             result.Should().BeOfType<OkObjectResult>();
 
             //Verify that body response is a list of fans
             result.Value.Should().BeOfType<List<Fan>>();
-            
+
+
+        }
+        [Fact]
+        public async Task Get_OnNoFans_ReturnNotFound()
+        {
+            // Arrange What the test needs to run
+            var mockFanService = new Mock<IFanService>();
+            mockFanService.Setup(service => service.GetAllFans())
+                .ReturnsAsync(new List<Fan>());
+
+            var fansController = new FansController(mockFanService.Object);
+
+            // Act
+            var result = (NotFoundResult)await fansController.GetFans();
+
+
+            // Assert
+            //Verify that result is an ok status 200
+            result.Should().BeOfType<NotFoundResult>();
 
         }
     }
 }
+   

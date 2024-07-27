@@ -21,7 +21,15 @@ namespace FormulaApp.API.Controllers
         {
             var fans = await _fastaService.GetAllFans();
 
-            return Ok(fans); //returns HttpStatusCode 200
+            if(fans.Any())
+            {
+                return Ok(fans); //returns HttpStatusCode 200
+            }
+
+            return NotFound();
+
         }
     }
+
+
 }
