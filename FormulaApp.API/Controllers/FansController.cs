@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FormulaApp.API.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FormulaApp.API.Controllers
@@ -7,10 +8,20 @@ namespace FormulaApp.API.Controllers
     [Route("api/[controller]")]
     public class FansController : ControllerBase
     {
+        private readonly IFanService _fastaService;
+
+        public FansController(IFanService fanService)
+        {
+            _fastaService = fanService;
+            
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetFans()
         {
-            return Ok("Fans"); //returns HttpStatusCode 200
+            var fans = await _fastaService.GetAllFans();
+
+            return Ok(fans); //returns HttpStatusCode 200
         }
     }
 }
