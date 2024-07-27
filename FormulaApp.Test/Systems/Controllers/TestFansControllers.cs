@@ -2,6 +2,7 @@
 using FormulaApp.API.Controllers;
 using FormulaApp.API.Models;
 using FormulaApp.API.Services.Interfaces;
+using FormulaApp.Test.Fixtures;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
@@ -37,15 +38,7 @@ namespace FormulaApp.Test.Systems.Controllers
             // Arrange What the test needs to run
             var mockFanService = new Mock<IFanService>();
             mockFanService.Setup(service => service.GetAllFans())
-                .ReturnsAsync(new List<Fan>()
-                {
-                    new Fan()
-                    {
-                        Id = 1,
-                        Name = "Test",
-                        Email ="test@email.com"
-                    }
-                });
+                .ReturnsAsync(FansFixture.GetFans());
 
             var fansController = new FansController(mockFanService.Object);
 
@@ -64,15 +57,7 @@ namespace FormulaApp.Test.Systems.Controllers
             // Arrange What the test needs to run
             var mockFanService = new Mock<IFanService>();
             mockFanService.Setup(service => service.GetAllFans())
-                .ReturnsAsync(new List<Fan>()
-                {
-                    new Fan()
-                    {
-                        Id = 1,
-                        Name = "Test",
-                        Email ="test@email.com"
-                    }
-                });
+                .ReturnsAsync(FansFixture.GetFans());
 
             var fansController = new FansController(mockFanService.Object);
 
@@ -91,15 +76,7 @@ namespace FormulaApp.Test.Systems.Controllers
             // Arrange What the test needs to run
             var mockFanService = new Mock<IFanService>();
             mockFanService.Setup(service => service.GetAllFans())
-                .ReturnsAsync(new List<Fan>()
-                {
-                    new Fan()
-                    {
-                        Id = 1,
-                        Name = "Test",
-                        Email ="test@email.com"
-                    }
-                });
+                .ReturnsAsync(FansFixture.GetFans());
 
             var fansController = new FansController(mockFanService.Object);
 
