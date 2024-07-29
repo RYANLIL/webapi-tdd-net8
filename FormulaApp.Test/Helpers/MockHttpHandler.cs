@@ -11,7 +11,10 @@ using System.Threading.Tasks;
 
 namespace FormulaApp.Test.Helpers
 {
-    // mocking the http used in Fanservice so we dont actually have to hit and api endpoint
+    /* 
+     * mocking the http used in Fanservice so we dont actually have to hit and api endpoint
+     * Used to test the Fanservice in the api project
+     * */
     public class MockHttpHandler<T>
     {
         // Success

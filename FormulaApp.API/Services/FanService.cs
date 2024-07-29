@@ -33,11 +33,12 @@ namespace FormulaApp.API.Services
                         Name = "don",
                         Email = "don.donne@email.com"
                     },
-                };*/
+                };
+            return fans;*/
 
             var response = await _httpClient.GetAsync(_apiConfig.Url);
 
-            if(response.StatusCode == HttpStatusCode.NotFound)
+            if (response.StatusCode == HttpStatusCode.NotFound)
                 return new List<Fan>();
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
@@ -47,7 +48,7 @@ namespace FormulaApp.API.Services
             var fans = await response.Content.ReadFromJsonAsync<List<Fan>>();
 
             return fans;
-            
+
         }
 
         
